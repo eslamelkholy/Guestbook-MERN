@@ -1,6 +1,5 @@
 const mongoose=require("mongoose");
-const userSchema=new mongoose.Schema({
-    _id:Number,
+const replySchema=new mongoose.Schema({
     messageReply:{ type: String}
 });
 

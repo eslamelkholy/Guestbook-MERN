@@ -1,7 +1,6 @@
 const mongoose=require("mongoose");
-const userSchema=new mongoose.Schema({
-    _id:Number,
-    message:{ type: String},
+const messageSchema=new mongoose.Schema({
+    message:{ type: String, required: true},
     replies: [{type: Number, ref: "Replies"}]
 });
 

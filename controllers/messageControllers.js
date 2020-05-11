@@ -28,7 +28,8 @@ function messageController(messageSchema)
         try{
             const message = await myMessageHandler.putMessageData(request);
             await message.save();
-            return response.status(201).json({success: true});
+            response.status(201)
+            return response.json({success: true});
         }catch{
             return response.status(401).json({success: false});
         }
@@ -38,40 +39,25 @@ function messageController(messageSchema)
         try{
             const message = await myMessageHandler.patchMessageData(request);
             await message.save();
-            return response.status(201).json({success: true});
+            response.status(201)
+            return response.json({success: true});
         }catch{
             return response.status(401).json({success: false});
         }
     }
+    // Delete Message
+    deleteMsg = async(request, response) =>{
+        try{
+            await request.message.remove();
+            response.status(204); 
+            return response.json({success: true});
+        }catch{
+            return response.status(400).json({success: false});
+        }
+    }
 
 
-    return {get, post, put, patch}
+    return {get, post, put, patch, deleteMsg}
 }
-// Handle { Put } Message Data Before Updating It
-// putMessageData =(request) =>{
-//     request = filterMessageData(request);
-//     const { message } = request;
-//     message.message = request.body.message;
-//     message.date = request.body.date;
-//     return message;
-// }
-// // Handle { Patch } Message Specified Data
-// patchMessageData = (request) =>{
-//     request = filterMessageData(request);
-//     const { message } = request;
-//     Object.entries(request.body).forEach(item =>{
-//         const key = item[0];
-//         const value = item[1];
-//         message[key] = value;
-//     });
-//     return message;
-// }
-// // Filter Message Data
-// filterMessageData = (request) =>{
-//     if(request.body._id)
-//         delete request.body._id;
-//     return request;
-// }
-
 
 module.exports = messageController;

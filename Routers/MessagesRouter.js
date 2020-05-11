@@ -25,6 +25,7 @@ function routes(messageSchema)
     .get((request, response) => response.json(request.message))
     .put(controller.put)
     .patch(controller.patch)
+    .delete(controller.deleteMsg);
 
     return MessageRouter;
 }

@@ -4,7 +4,7 @@ function messageController(messageSchema)
     // List Messages Using Get
     get = async(request, response) =>{
         try{
-            const messages = await messageSchema.find({}).populate({path: "Replies"})
+            const messages = await messageSchema.find({}).populate({path: "Messages"})
             response.status(201);
             return response.json(messages);
         }catch{
@@ -55,8 +55,6 @@ function messageController(messageSchema)
             return response.status(400).json({success: false});
         }
     }
-
-
     return {get, post, put, patch, deleteMsg}
 }
 

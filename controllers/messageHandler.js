@@ -19,11 +19,9 @@ module.exports = {
         });
         return message;
     },
-    
 };
 // Filter Message Data
 filterMessageData = (request) =>{
-    console.log("hereeeee2")
     if(request.body._id)
         delete request.body._id;
     return request;

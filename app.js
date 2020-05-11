@@ -12,13 +12,14 @@ app.use(bodyParser.json());
 // Models
 const userSchema = require("./Models/UserModel");
 const messageSchema = require("./Models/MessageModel");
-const replySchema = require("./Models/ReplyModel");
 
 // Routers & Injected Models Into it
 const MessageRouter = require("./Routers/MessagesRouter")(messageSchema);
+const MessageReplyRouter = require("./Routers/MessageReplyRouter")(messageSchema); 
 
 
 app.use("/message", MessageRouter);
+app.use("/message/:id/reply", MessageReplyRouter);
 
 app.server = app.listen(port, () => {
     console.log("Listening on Port 8000...");

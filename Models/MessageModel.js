@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 const messageSchema=new mongoose.Schema({
     message:{ type: String, required: true},
     date: {type: Date, default: Date.now},
-    replies: [{type: Number, ref: "Replies"}]
+    replies: [{type: Number, ref: "Messages"}]
 });
 
 //mapping

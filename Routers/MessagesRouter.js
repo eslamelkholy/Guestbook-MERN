@@ -23,6 +23,8 @@ function routes(messageSchema)
     });
     MessageRouter.route("/:id")
     .get((request, response) => response.json(request.message))
+    .put(controller.put)
+    .patch(controller.patch)
 
     return MessageRouter;
 }

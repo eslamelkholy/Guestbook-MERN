@@ -8,6 +8,21 @@ function routes(messageSchema)
 
     MessageRouter.route("").get(controller.get);
     MessageRouter.route("").post(controller.post);
+    // Message Middleware
+    MessageRouter.use("/:id", async(request, response, next) =>{
+        try{
+            const message = await messageSchema.findById(request.params.id);
+            if(message){
+                request.message = message;
+                return next();
+            }
+            throw Error();
+        }catch{
+            return response.sendStatus(404)
+        }
+    });
+    MessageRouter.route("/:id")
+    .get((request, response) => response.json(request.message))
 
     return MessageRouter;
 }

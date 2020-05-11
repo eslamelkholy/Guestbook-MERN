@@ -15,7 +15,10 @@ const messageSchema = require("./Models/MessageModel");
 const replySchema = require("./Models/ReplyModel");
 
 // Routers & Injected Models Into it
+const MessageRouter = require("./Routers/MessagesRouter")(messageSchema);
 
+
+app.use("/message", MessageRouter);
 
 app.server = app.listen(port, () => {
     console.log("Listening on Port 8000...");

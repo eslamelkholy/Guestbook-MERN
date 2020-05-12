@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter, Route, withRouter,Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap/dist/js/bootstrap.js';
 import AuthenticationApp from './Authentication/authenticationApp';
@@ -11,8 +11,8 @@ class App extends React.Component {
     return(
       <Fragment>
         <BrowserRouter>
-          <AuthenticationApp />
-          <MessageApp />
+            <AuthenticationApp />
+            <MessageApp />
         </BrowserRouter>
       </Fragment>
     );

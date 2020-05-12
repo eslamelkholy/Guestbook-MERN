@@ -7,7 +7,8 @@ const messageSchema=new mongoose.Schema({
     message:{ type: String, required: true},
     date: {type: Date, default: Date.now},
     isMessage: {type:Boolean, default:true},
-    replies: [{type: ObjectId, ref: "Messages"}]
+    replies: [{type: ObjectId, ref: "Messages"}],
+    user: {type: ObjectId, ref: "Users"}
     
 });
 

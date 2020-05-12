@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
 import './App.css';
-// Bootstrap in Index it will be seen in Whole Project component
+import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap/dist/js/bootstrap.js';
 import AuthenticationApp from './Authentication/authenticationApp';
-import { BrowserRouter } from 'react-router-dom';
+import MessageApp from './MessageComponent/messageApp';
 class App extends React.Component {
   render(){
     return(
       <Fragment>
         <BrowserRouter>
           <AuthenticationApp />
+          <MessageApp />
         </BrowserRouter>
       </Fragment>
     );

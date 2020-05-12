@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
 const db = mongoose.connect("mongodb://localhost:27017/Guestbook");
+const auth = require("./controllers/middleware");
 
 var port = process.env.PORT || 8000;
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,8 +20,8 @@ const MessageReplyRouter = require("./Routers/MessageReplyRouter")(messageSchema
 const UserRouter = require("./Routers/UsersRouter")(userSchema);
 
 app.use("", UserRouter);
-app.use("/message", MessageRouter);
-app.use("/messagereply", MessageReplyRouter);
+app.use("/message", auth, MessageRouter);
+app.use("/messagereply", auth, MessageReplyRouter);
 
 app.server = app.listen(port, () => {
     console.log("Listening on Port 8000...");

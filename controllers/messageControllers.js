@@ -49,7 +49,7 @@ function messageController(messageSchema)
     deleteMsg = async(request, response) =>{
         try{
             await request.message.remove();
-            response.status(204); 
+            response.status(201); 
             return response.json({success: true});
         }catch{
             return response.status(400).json({success: false});

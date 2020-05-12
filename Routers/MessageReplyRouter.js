@@ -6,7 +6,7 @@ function routes(messageSchema)
     const MessageReplyRouter = express.Router();
     const controller = messageReplyController(messageSchema);
 
-    
+    MessageReplyRouter.post("", controller.post)
 
     return MessageReplyRouter;
 }

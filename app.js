@@ -19,7 +19,7 @@ const MessageReplyRouter = require("./Routers/MessageReplyRouter")(messageSchema
 
 
 app.use("/message", MessageRouter);
-app.use("/message/:id/reply", MessageReplyRouter);
+app.use("/messagereply", MessageReplyRouter);
 
 app.server = app.listen(port, () => {
     console.log("Listening on Port 8000...");

@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
-
 const db = mongoose.connect("mongodb://localhost:27017/Guestbook");
 
 var port = process.env.PORT || 8000;

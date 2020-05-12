@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 module.exports = {
     saveUserData: async (userSchema, request) =>{
@@ -12,5 +13,8 @@ module.exports = {
     },
     validateHashedPassword: async(userPassword, hashedPassword) =>{
         return await bcrypt.compare(userPassword, hashedPassword);
+    },
+    generateAccessToken: (user) =>{
+        return jwt.sign({id: user._id}, process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600});
     }
 }

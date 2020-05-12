@@ -6,7 +6,8 @@ function routes(userSchema)
     const UserRouter = express.Router();
     const controller = userController(userSchema);
 
-    UserRouter.post("/register", controller.register)
+    UserRouter.post("/register", controller.register);
+    UserRouter.post("/login", controller.login);
 
     return UserRouter;
 }

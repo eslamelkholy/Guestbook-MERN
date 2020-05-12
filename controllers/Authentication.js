@@ -9,5 +9,8 @@ module.exports = {
             email: request.body.email
         });
         return user;
+    },
+    validateHashedPassword: async(userPassword, hashedPassword) =>{
+        return await bcrypt.compare(userPassword, hashedPassword);
     }
 }

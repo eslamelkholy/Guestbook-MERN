@@ -3,6 +3,7 @@ function messageReplyController(messageSchema)
     post = async(request, response) =>{
         try{
             const newReplyMessage = new messageSchema(request.body);
+            newReplyMessage.isMessage = false;
             await newReplyMessage.save();
             const mainMessageUpdate = await messageSchema.update({_id : request.body.mainMessageID},{
                 $push: {replies: newReplyMessage}
@@ -13,6 +14,7 @@ function messageReplyController(messageSchema)
             return response.status(402).json({update: false});
         }
     }
+    
     return {post};
 }
 

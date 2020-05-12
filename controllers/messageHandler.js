@@ -5,7 +5,6 @@ module.exports = {
         request = filterMessageData(request);
         const { message } = request;
         message.message = request.body.message;
-        message.date = request.body.date;
         return message;
     },
     // Handle { Patch } Message Specified Data

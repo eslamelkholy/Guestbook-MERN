@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-
 class MessageHomePage extends React.Component {
     render() {
         return (

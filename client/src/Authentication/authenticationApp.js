@@ -8,8 +8,8 @@ class AuthenticationApp extends Component
     {
         return(
             <Fragment>
-                <Route exact path="/login" component ={()=> <Login/> } />
-                <Route exact path="/" component ={()=> <Login  /> } />
+                <Route exact path="/login" component ={(props)=> <Login {...props}/> } />
+                <Route exact path="/" component ={(props)=> <Login {...props}/> } />
                 <Route exact path="/register" component = {() => <Register /> }  />
             </Fragment>
         )

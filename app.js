@@ -16,8 +16,9 @@ const messageSchema = require("./Models/MessageModel");
 // Routers & Injected Models Into it
 const MessageRouter = require("./Routers/MessagesRouter")(messageSchema);
 const MessageReplyRouter = require("./Routers/MessageReplyRouter")(messageSchema); 
+const UserRouter = require("./Routers/UsersRouter")(userSchema);
 
-
+app.use("", UserRouter);
 app.use("/message", MessageRouter);
 app.use("/messagereply", MessageReplyRouter);
 

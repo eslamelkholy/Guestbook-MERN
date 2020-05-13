@@ -1,6 +1,7 @@
 class Auth{
     constructor() {
         this.authenticated = false;
+        this.token = localStorage.getItem('token');
     }
     login(cb)
     {
@@ -14,6 +15,10 @@ class Auth{
     isAuthenticated(){
         return this.authenticated;
     }
+    setToken(token){
+        this.token = token;
+    }
+    getToken(){return this.token}
 
 }
 export default new Auth();

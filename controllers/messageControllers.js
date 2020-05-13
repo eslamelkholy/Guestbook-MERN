@@ -4,11 +4,11 @@ function messageController(messageSchema)
     // List Messages Using Get
     get = async(request, response) =>{
         try{
-            const messages = await messageSchema.find({}).populate({path: "Messages"})
+            const messages = await messageSchema.find({}).populate({path: "replies user"})
             response.status(201);
             return response.json(messages);
         }catch{
-            return response.send(401);
+            return response.sendStatus(401);
         }
     }
     // Add Message Using Post

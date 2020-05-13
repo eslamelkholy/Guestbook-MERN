@@ -8,7 +8,8 @@ class MessageHomePage extends React.Component {
 
     state = {
         messageData : [],
-        message: ""
+        message: "",
+        user:""
     }
     componentDidMount(){
         this.getData();
@@ -30,7 +31,7 @@ class MessageHomePage extends React.Component {
             user: user.id
         },config).then((res) => {
             this.setState({
-                messageData: [...this.state.messageData, res.data]
+                messageData: [...this.state.messageData, res.data],
             })
         });
     }
@@ -48,14 +49,33 @@ class MessageHomePage extends React.Component {
             this.setState({messageData: res.data});
         })
     }
+    deleteMessage = (msgID) =>{
+        const config = {
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }
+        const token = auth.getToken();
+        if(token){
+            config.headers['x-auth-token'] = token;
+        }
+        Axios.delete(`http://localhost:8000/message/${msgID}`,config).then(res => this.getData() );
+    }
     render() {
+        let user = auth.getUserData();
         let Messages = this.state.messageData.map((message, index) =>{
             return(
                 <div className="card" key={message._id}>
                     <div className="card-header">
                         {message.user.username}
                         <div className="controllers">
-                        <Link to={`/message${message._id}`} className="btn btn-info">Show</Link>
+                        {message.user._id === user.id || message.user === user.id? (
+                            <Fragment>
+                                <Link to={`/editMessage/${message._id}`} className="btn btn-primary operations">Edit</Link>
+                                <Link onClick={() =>this.deleteMessage(message._id)} className="btn btn-danger operations">Delete</Link>
+                            </Fragment>
+                        ): (<span></span>)}
+                        <Link to={`/message${message._id}`} className="btn btn-info operations show">Show</Link>
                         </div>
                         <div className="dateContainer">
                         <span className="date">{moment(message.date).utc().format('YYYY-MM-DD')}</span>

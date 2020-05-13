@@ -15,7 +15,7 @@ After download or clone the repo, you need to follow this steps to have the deve
   - nodemon to Run Server
   - npm start to run Client
   
-### -Project Workflow
+# Project Workflow
  - Setting up Mongoose Schema For User & Messages
  - Project Structure 
  1- Injected Models into Routers
@@ -33,7 +33,7 @@ After download or clone the repo, you need to follow this steps to have the deve
   - Authorization For User to ( Delete/Update ) his Messages Only
   - Register / Login Validation
   
-### -Project Pictures
+# Project Pictures
 ![](public/Images/adminPanel.png)
 ![](public/Images/adminPanel.png)
 ![](public/Images/adminPanel.png)

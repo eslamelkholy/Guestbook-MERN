@@ -15,51 +15,24 @@ class MessageHomePage extends React.Component {
         this.getData();
     }
     onFormSubmit = (e)=>{
-        const config = {
-            headers : {
-                "Content-type" : "application/json"
-            }
-        }
-        const token = auth.getToken();
-        if(token){
-            config.headers['x-auth-token'] = token;
-        }
         e.preventDefault();
         let user = auth.getUserData();
         Axios.post("http://localhost:8000/message",{
             message : this.state.message,
             user: user.id
-        },config).then((res) => {
+        },getConfig()).then((res) => {
             this.setState({
                 messageData: [...this.state.messageData, res.data],
             })
         });
     }
     getData = async() =>{
-        const config = {
-            headers : {
-                "Content-type" : "application/json"
-            }
-        }
-        const token = auth.getToken();
-        if(token){
-            config.headers['x-auth-token'] = token;
-        }
-        await Axios.get("/message", config).then((res) =>{
+        await Axios.get("/message", getConfig()).then((res) =>{
             this.setState({messageData: res.data});
         })
     }
     deleteMessage = (msgID) =>{
-        const config = {
-            headers : {
-                "Content-type" : "application/json"
-            }
-        }
-        const token = auth.getToken();
-        if(token){
-            config.headers['x-auth-token'] = token;
-        }
-        Axios.delete(`http://localhost:8000/message/${msgID}`,config).then(res => this.getData() );
+        Axios.delete(`http://localhost:8000/message/${msgID}`,getConfig()).then(res => this.getData() );
     }
     render() {
         let user = auth.getUserData();
@@ -110,5 +83,17 @@ class MessageHomePage extends React.Component {
             </Fragment>
         )
     }
+}
+function getConfig(){
+    const config = {
+        headers : {
+            "Content-type" : "application/json"
+        }
+    }
+    const token = auth.getToken();
+    if(token){
+        config.headers['x-auth-token'] = token;
+    }
+    return config;
 }
 export default MessageHomePage;

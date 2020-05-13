@@ -10,7 +10,7 @@ function routes(messageSchema)
     // Message Middleware
     MessageRouter.use("/:id", async(request, response, next) =>{
         try{
-            const message = await messageSchema.findOne({_id: request.params.id, isMessage: true});
+            const message = await messageSchema.findOne({_id: request.params.id, isMessage: true}).populate({path: "replies user"});
             if(message){
                 request.message = message;
                 return next();

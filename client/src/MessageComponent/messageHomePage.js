@@ -21,9 +21,7 @@ class MessageHomePage extends React.Component {
             message : this.state.message,
             user: user.id
         },getConfig()).then((res) => {
-            this.setState({
-                messageData: [...this.state.messageData, res.data],
-            })
+            this.getData();
         });
     }
     getData = async() =>{
@@ -48,7 +46,7 @@ class MessageHomePage extends React.Component {
                                 <Link onClick={() =>this.deleteMessage(message._id)} className="btn btn-danger operations">Delete</Link>
                             </Fragment>
                         ): (<span></span>)}
-                        <Link to={`/message${message._id}`} className="btn btn-info operations show">Show</Link>
+                        <Link to={`/message/${message._id}`} className="btn btn-info operations show">Show</Link>
                         </div>
                         <div className="dateContainer">
                         <span className="date">{moment(message.date).utc().format('YYYY-MM-DD')}</span>

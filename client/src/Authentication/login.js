@@ -2,7 +2,8 @@ import React, { Fragment } from 'react'
 import '../layout/authenticationStyle/login.css';
 import Axios from 'axios';
 import auth from '../auth';
-import  { Redirect } from 'react-router-dom';
+import  { Redirect, Link } from 'react-router-dom';
+import GuestHeader from './guestHeader'
 import MessageApp from '../MessageComponent/messageApp';
 class Login extends React.Component {
     state = {
@@ -11,7 +12,6 @@ class Login extends React.Component {
         warrningMsg: ""
     }
     componentDidMount() {
-        localStorage.removeItem('token');
     }
     userLoginValidation()
     {
@@ -23,6 +23,7 @@ class Login extends React.Component {
             auth.setUserData(serverReply.userData);
             localStorage.setItem("token", serverReply.accessToken);
             auth.login(() =>{
+                // window.location = "/home";
                 this.props.history.push("/home");
                 auth.setToken(serverReply.accessToken);
             })
@@ -35,6 +36,7 @@ class Login extends React.Component {
     render() {
         return (
             <Fragment>
+            <GuestHeader/>
                 <br/><br/>
                 <h1>Welcome To Guestbook Login Page</h1>
                 <div className="row container">

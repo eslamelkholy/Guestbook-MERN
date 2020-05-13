@@ -24,7 +24,7 @@ class MessageHomePage extends React.Component {
         });
     }
     getData = async() =>{
-        await Axios.get("/message", auth.getConfig()).then((res) =>{
+        await Axios.get("http://localhost:8000/message", auth.getConfig()).then((res) =>{
             this.setState({messageData: res.data});
         })
     }

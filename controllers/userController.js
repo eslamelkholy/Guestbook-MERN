@@ -28,7 +28,17 @@ function userController(userSchema)
             response.status(500).send("Authentication Failed");
         }
     }
-    return {register, login};
+    authUser = async(request, response) =>{
+        try{
+            const user = await userSchema.findById(request.user.id);
+            if(user == null)
+                return response.status(400).send("User Not Found");
+            return response.status(200).json(user);
+        }catch{
+            response.status(500).send("Authentication Failed");
+        }
+    }
+    return {register, login, authUser};
 }
 
 module.exports = userController;

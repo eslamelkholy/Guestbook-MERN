@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios'
 import auth from '../auth';
 import moment from 'moment';
+import HeaderPage from './HeaderPage';
 class MessageHomePage extends React.Component {
     state = {
         messageData : [],
@@ -24,7 +25,16 @@ class MessageHomePage extends React.Component {
         });
     }
     getData = async() =>{
-        await Axios.get("http://localhost:8000/message", auth.getConfig()).then((res) =>{
+        const config = {
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }
+        const token = localStorage.getItem("token");
+        if(token){
+            config.headers['x-auth-token'] = token;
+        }
+        await Axios.get("http://localhost:8000/message", config).then((res) =>{
             this.setState({messageData: res.data});
         })
     }
@@ -59,6 +69,7 @@ class MessageHomePage extends React.Component {
         })
         return (
             <Fragment>
+            <HeaderPage/>
                 <h2>Welcome To Guestbook </h2>
                 <div className="container">
                     <div className="row">

@@ -8,6 +8,7 @@ class MessageApp extends Component
     {
         return(
             <Fragment>
+                    
                     <ProtectedRoute exact path="/home" component ={(props)=> <MessageHomePage {...props} /> } />
                     <ProtectedRoute exact path="/message/:id" component ={(props)=> <MessagePage {...props} /> } />
             </Fragment>

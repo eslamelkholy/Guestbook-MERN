@@ -3,6 +3,7 @@ import '../layout/messageStyle/messageHome.css'
 import { Link } from 'react-router-dom';
 import Axios from 'axios'
 import auth from '../auth';
+import HeaderPage from './HeaderPage';
 import moment from 'moment';
 class MessagePage extends React.Component {
 
@@ -62,6 +63,7 @@ class MessagePage extends React.Component {
         })
         return (
             <Fragment>
+            <HeaderPage/>
                 <h2>Welcome To Guestbook </h2>
                 <div className="container">
                     <div className="card col-9">

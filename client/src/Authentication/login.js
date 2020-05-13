@@ -11,8 +11,6 @@ class Login extends React.Component {
         password: "",
         warrningMsg: ""
     }
-    componentDidMount() {
-    }
     userLoginValidation()
     {
         return postRequest("http://localhost:8000/login", { username: this.state.username, password: this.state.password });
@@ -23,7 +21,7 @@ class Login extends React.Component {
             auth.setUserData(serverReply.userData);
             localStorage.setItem("token", serverReply.accessToken);
             auth.login(() =>{
-                // window.location = "/home";
+                // window.location = "/home";c
                 this.props.history.push("/home");
                 auth.setToken(serverReply.accessToken);
             })

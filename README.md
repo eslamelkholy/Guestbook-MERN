@@ -1,18 +1,20 @@
 # Guestbook Using MERN Stack
 This Repo Related to Simple GuestBook Project Where You Can Share Messages with You Friends
-# Tecnologies
+# Project Dependencies
 
   - Nodejs (Express FrameWork)
   - MongoDB
   - Reactjs
   - JWT (Json Web Token)
   - RESTful Api's
+  
 # Installation
 After download or clone the repo, you need to follow this steps to have the development environment running :
   - Install dependencies : npm install
   - go to Client Folder and also Make npm install to install Reactjs dependencies
   - nodemon to Run Server
   - npm start to run Client
+  
 ### -Project Workflow
  - Setting up Mongoose Schema For User & Messages
  - Project Structure 

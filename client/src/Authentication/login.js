@@ -20,11 +20,11 @@ class Login extends React.Component {
     onFormSubmit = (e) => {
         e.preventDefault();
         this.userLoginValidation().then(serverReply =>{
+            auth.setUserData(serverReply.userData);
             localStorage.setItem("token", serverReply.accessToken);
             auth.login(() =>{
                 this.props.history.push("/home");
                 auth.setToken(serverReply.accessToken);
-                // window.location.href = "http://localhost:3000/home";
             })
         }).catch(err =>{
             if( err.response){

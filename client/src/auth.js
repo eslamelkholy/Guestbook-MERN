@@ -2,6 +2,7 @@ class Auth{
     constructor() {
         this.authenticated = false;
         this.token = localStorage.getItem('token');
+        this.user = "";
     }
     login(cb)
     {
@@ -19,6 +20,10 @@ class Auth{
         this.token = token;
     }
     getToken(){return this.token}
+    setUserData(user){
+        this.user = user;
+    }
+    getUserData(){return this.user}
 
 }
 export default new Auth();

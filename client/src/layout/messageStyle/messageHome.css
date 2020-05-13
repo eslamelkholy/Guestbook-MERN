@@ -10,3 +10,19 @@ h2{
 .controllers{
   float: right;
 }
+.card{
+  margin-bottom: 40px;
+}
+.date{
+  font-size: 13px;
+  float: left;
+  font-family: sans-serif;
+}
+.dateContainer{
+  margin-left: -69px;
+  margin-top: 1px;
+}
+.submitBtn{
+  width: 100% !important;
+    font-size: 17px !important;
+}

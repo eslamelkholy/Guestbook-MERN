@@ -5,7 +5,6 @@ import Axios from 'axios'
 import auth from '../auth';
 import moment from 'moment';
 class MessageHomePage extends React.Component {
-
     state = {
         messageData : [],
         message: "",
@@ -20,17 +19,17 @@ class MessageHomePage extends React.Component {
         Axios.post("http://localhost:8000/message",{
             message : this.state.message,
             user: user.id
-        },getConfig()).then((res) => {
+        },auth.getConfig()).then((res) => {
             this.getData();
         });
     }
     getData = async() =>{
-        await Axios.get("/message", getConfig()).then((res) =>{
+        await Axios.get("/message", auth.getConfig()).then((res) =>{
             this.setState({messageData: res.data});
         })
     }
     deleteMessage = (msgID) =>{
-        Axios.delete(`http://localhost:8000/message/${msgID}`,getConfig()).then(res => this.getData() );
+        Axios.delete(`http://localhost:8000/message/${msgID}`,auth.getConfig()).then(res => this.getData() );
     }
     render() {
         let user = auth.getUserData();
@@ -81,17 +80,5 @@ class MessageHomePage extends React.Component {
             </Fragment>
         )
     }
-}
-function getConfig(){
-    const config = {
-        headers : {
-            "Content-type" : "application/json"
-        }
-    }
-    const token = auth.getToken();
-    if(token){
-        config.headers['x-auth-token'] = token;
-    }
-    return config;
 }
 export default MessageHomePage;

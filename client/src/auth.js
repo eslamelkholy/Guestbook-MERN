@@ -24,6 +24,18 @@ class Auth{
         this.user = user;
     }
     getUserData(){return this.user}
+    getConfig(){
+        const config = {
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }
+        const token = this.getToken();
+        if(token){
+            config.headers['x-auth-token'] = token;
+        }
+        return config;
+    }
 
 }
 export default new Auth();

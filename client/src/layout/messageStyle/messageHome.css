@@ -36,3 +36,10 @@ h2{
 .show{
   float: right;
 }
+.card, .card-header{
+  background-color: ghostwhite !important;
+
+}
+h3{
+  margin-top: 42px;
+}

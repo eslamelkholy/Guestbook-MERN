@@ -2,9 +2,8 @@ import React, { Fragment } from 'react'
 import '../layout/authenticationStyle/login.css';
 import Axios from 'axios';
 import auth from '../auth';
-import  { Redirect, Link } from 'react-router-dom';
+import $ from 'jquery'
 import GuestHeader from './guestHeader'
-import MessageApp from '../MessageComponent/messageApp';
 class Login extends React.Component {
     state = {
         username: "",
@@ -26,16 +25,13 @@ class Login extends React.Component {
                 auth.setToken(serverReply.accessToken);
             })
         }).catch(err =>{
-            if( err.response){
-                console.log("Hey Please Enter Valid Data we will Handle Later");
-            }
+            $("#msgWarning").show();
         })
     }
     render() {
         return (
             <Fragment>
             <GuestHeader/>
-                <br/><br/>
                 <h1>Welcome To Guestbook Login Page</h1>
                 <div className="row container">
                     <div className="col-6 form">

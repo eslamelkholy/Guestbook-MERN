@@ -28,7 +28,8 @@ After download or clone the repo, you need to follow this steps to have the deve
   - Verify User Token Route
   - Go to Front-end To Hit the Server and Build UI
   - Using Axios To Fetch Data
-  - Makes ( RouteGuard ) Abstract Class and Share it to The Whole Application (Singletone Pattern)
+  - Makes ( RouteGuard ) To Secure my Front-end Routes
+  - Abstract Class ( AUTH ) and Share it to The Whole Application (Singletone Pattern)
   - Secure My Front-end Application With RouteGuard
   - Authorization For User to ( Delete/Update ) his Messages Only
   - Register / Login Validation

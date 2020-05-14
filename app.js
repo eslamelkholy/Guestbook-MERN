@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
 var cors = require('cors')
-const db = mongoose.connect("mongodb://localhost:27017/Guestbook");
+const db = mongoose.connect("mongodb://localhost:27017/Guestbook2");
 const auth = require("./controllers/middleware");
 
 var port = process.env.PORT || 8000;
@@ -15,10 +15,11 @@ app.use(bodyParser.json());
 // Models
 const userSchema = require("./Models/UserModel");
 const messageSchema = require("./Models/MessageModel");
+const replySchema = require("./Models/ReplyModel");
 
 // Routers & Injected Models Into it
 const MessageRouter = require("./Routers/MessagesRouter")(messageSchema);
-const MessageReplyRouter = require("./Routers/MessageReplyRouter")(messageSchema); 
+const MessageReplyRouter = require("./Routers/MessageReplyRouter")(replySchema,messageSchema); 
 const UserRouter = require("./Routers/UsersRouter")(userSchema);
 
 app.use("", UserRouter);

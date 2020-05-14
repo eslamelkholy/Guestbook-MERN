@@ -40,7 +40,7 @@ class EditMessagePage extends React.Component {
                             <textarea className="form-control" placeholder="Write Your Message" id="exampleFormControlTextarea1" rows="3" value={this.state.message} onChange={(e) => {this.setState({message : e.target.value})}}></textarea>
                             <small className="form-text text-muted">Add Message to Share Best Moment With Your Friends And Family.</small>
                         </div>
-                        <button type="submit" className="btn btn-success submitBtn" onClick={this.onFormSubmit}>Add New Message</button>
+                        <button type="submit" className="btn btn-success submitBtn" onClick={this.onFormSubmit}>Update Message</button>
                     </form>
                 </div>
             </Fragment>

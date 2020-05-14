@@ -34,15 +34,15 @@ class MessagePage extends React.Component {
         e.preventDefault();
         let user = auth.getUserData();
         Axios.post("http://localhost:8000/messagereply",{
-            message : this.state.newReply,
+            replyBody : this.state.newReply,
             user: user.id,
-            mainMessageID:this.state.msgID
+            message:this.state.msgID
         },auth.getConfig()).then((res) => {
             this.getMessageData();
         });
     }
     deleteMessage = (msgID) =>{
-        Axios.delete(`http://localhost:8000/message/${msgID}`,auth.getConfig()).then(res => this.getData() );
+        Axios.delete(`http://localhost:8000/message/${msgID}`,auth.getConfig()).then(res => this.props.history.push("/home") );
     }
     render() {
         let user = auth.getUserData();
@@ -56,7 +56,7 @@ class MessagePage extends React.Component {
                         </div>
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title">{reply.message}</h5>
+                        <h5 className="card-title">{reply.replyBody}</h5>
                     </div>
                 </div>
             )
@@ -68,7 +68,7 @@ class MessagePage extends React.Component {
                 <div className="container">
                     <div className="card col-9">
                         <div className="card-header">
-                            {this.state.user.username}
+                            <h5>{this.state.user.username}</h5>
                             <div className="controllers">
                             {this.state.user._id === user.id ? (
                                 <Fragment>

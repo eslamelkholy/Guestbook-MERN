@@ -2,21 +2,20 @@ const express = require("express");
 const messageReplyController = require("../controllers/messageReplyController");
 const messageController = require("../controllers/messageControllers");
 
-function routes(messageSchema)
+function routes(replySchema, messageSchema)
 {
     const MessageReplyRouter = express.Router();
-    const myMessageReplyController = messageReplyController(messageSchema);
-    const myMessageController = messageController(messageSchema);
+    const myMessageReplyController = messageReplyController(replySchema, messageSchema);
 
     // { Add } New Reply
     MessageReplyRouter.post("", myMessageReplyController.post);
     // Reply Middleware
     MessageReplyRouter.use("/:id", async(request, response, next) =>{
         try{
-            const message = await messageSchema.findOne({_id: request.params.id, isMessage: false});
-            console.log(message);
-            if(message){
-                request.message = message;
+            const reply = await replySchema.findOne({_id: request.params.id});
+            console.log(Reply);
+            if(reply){
+                request.reply = reply;
                 return next();
             }
             throw Error();
@@ -26,7 +25,7 @@ function routes(messageSchema)
     });
     // { Update } & { Delete } Message Reply
     MessageReplyRouter.route("/:id").
-    put(myMessageController.put)
+    put(myMessageReplyController.put)
     .delete(myMessageReplyController.deleteMessageReply);
 
     return MessageReplyRouter;

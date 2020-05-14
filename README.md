@@ -16,11 +16,11 @@ After download or clone the repo, you need to follow this steps to have the deve
   - npm start to run Client
   
 # Project Workflow
- - Setting up Mongoose Schema For User & Messages
- - Project Structure 
- 1- Injected Models into Routers
-2-Pass Models To Controller From Routers to make the Structure more Clean
-3-Separate Back-end Routers From Controller
+  - Setting up Mongoose Schema For User & Messages
+  - Project Structure 
+  - 1- Injected Models into Routers
+  - 2-Pass Models To Controller From Routers to make the Structure more Clean
+  - 3-Separate Back-end Routers From Controller
   - RESTful Api's For Message 
   - Test RESTful Api's Using Postman
   - Implement User Api's and Hashing the User Password
@@ -35,10 +35,10 @@ After download or clone the repo, you need to follow this steps to have the deve
   - Register / Login Validation
   
 # Project Pictures
-![](public/Images/adminPanel.png)
-![](public/Images/adminPanel.png)
-![](public/Images/adminPanel.png)
-![](public/Images/adminPanel.png)
+![](client/public/MessageHomePage.png)
+![](client/public/MessagePage.png)
+![](client/public/RegisterPage.png)
+![](client/public/LoginPage.png)
 
 
 

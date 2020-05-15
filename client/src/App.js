@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 import AuthenticationApp from './Authentication/authenticationApp';
 import MessageApp from './MessageComponent/messageApp';
+import Auth from './auth'
 
 class App extends React.Component {
   render(){

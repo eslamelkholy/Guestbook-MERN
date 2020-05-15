@@ -19,6 +19,7 @@ class Auth{
     isAuthenticated(){
         return this.authenticated;
     }
+    
     setToken(token){
         this.token = token;
     }
@@ -44,9 +45,14 @@ class Auth{
         {
             await Axios.get("http://localhost:8000/user",this.getConfig())
             .then((res) => {
-                res.data.id = res.data._id;
-                this.setUserData(res.data);
-                this.authenticated = true;
+                if(res.data.msg === "Token is Not Valid")
+                    this.authenticated = false;
+                else
+                {
+                    res.data.id = res.data._id;
+                    this.setUserData(res.data);
+                    this.authenticated = true;
+                }
             }).catch((err) =>{
                 console.log(err)
                 this.authenticated = false;

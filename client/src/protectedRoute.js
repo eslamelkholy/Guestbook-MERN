@@ -5,7 +5,8 @@ export const ProtectedRoute = ({component: Component ,...rest}) =>{
     return(
         <Route {...rest}
             render = {(props) =>{
-                if(auth.isAuthenticated()){
+                if(auth.authenticated || localStorage.getItem("token")){
+                    console.log(auth.user)
                     return <Component {...props}/>
                 }else{
                     return <Redirect to={

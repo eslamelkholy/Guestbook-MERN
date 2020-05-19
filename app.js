@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
 var cors = require('cors')
-const db = mongoose.connect("mongodb://localhost:27017/Guestbook2");
+const db = mongoose.connect("mongodb://localhost:27017/Guestbook4");
 const auth = require("./controllers/middleware");
 
 var port = process.env.PORT || 8000;

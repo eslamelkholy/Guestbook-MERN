@@ -1,4 +1,4 @@
-*{
+body{
     padding: 0;
     margin: 0;
     background-color: ghostwhite;
@@ -44,4 +44,16 @@ h1{
 }
 .form{
   margin-top: -30px;
+}
+.facebookLogin{
+  margin-top: 10px;
+}
+.googleBtn{
+  width: 100% !important;
+}
+.facebookBtn{
+  width: 100% !important;
+}
+span{
+  width: 100% !important;
 }

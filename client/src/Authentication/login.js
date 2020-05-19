@@ -3,6 +3,8 @@ import '../layout/authenticationStyle/login.css';
 import Axios from 'axios';
 import auth from '../auth';
 import $ from 'jquery'
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import GuestHeader from './guestHeader'
 class Login extends React.Component {
     state = {
@@ -20,7 +22,6 @@ class Login extends React.Component {
             auth.setUserData(serverReply.userData);
             localStorage.setItem("token", serverReply.accessToken);
             auth.login(() =>{
-                // window.location = "/home";c
                 this.props.history.push("/home");
                 auth.setToken(serverReply.accessToken);
             })
@@ -28,6 +29,42 @@ class Login extends React.Component {
             $("#msgWarning").show();
         })
     }
+    // Google Login Button
+    responseSuccessGoogle = (response) => {
+    Axios({
+      method:"POST",
+      url:"http://localhost:8000/user/googlelogin",
+      data:{tokenId: response.tokenId}
+    }).then(response =>{
+      const { isAuthenticated, accessToken, user} = response.data;
+      if(isAuthenticated){
+        auth.setUserData(user)
+        auth.setToken(accessToken)
+        auth.authenticated = true;
+        localStorage.setItem("token", accessToken)
+        this.props.history.push("/home");
+    }else
+        $("#msgWarning").show();
+    })
+  }
+  // Facebook Login Button
+    responseFacebook = (response) => {
+    Axios({
+      method:"POST",
+      url:"http://localhost:8000/user/facebooklogin",
+      data:{accessToken: response.accessToken, userID: response.userID}
+    }).then(response =>{
+      const { isAuthenticated, accessToken, user} = response.data;
+      if(isAuthenticated){
+        auth.setUserData(user)
+        auth.setToken(accessToken)
+        auth.authenticated = true;
+        localStorage.setItem("token", accessToken)
+        this.props.history.push("/home");
+    }else
+        $("#msgWarning").show();
+    })
+  }
     render() {
         return (
             <Fragment>
@@ -56,6 +93,29 @@ class Login extends React.Component {
                                 </div>
                             </div>
                         </form>
+                        <div className="row">
+                        <div className="col-10 offset-2">
+                        <GoogleLogin
+                            clientId="457064280855-fon6ji3u3aqgi3kpjp03e4lhtfgtshmj.apps.googleusercontent.com"
+                            buttonText="Login With Google"
+                            onSuccess={this.responseSuccessGoogle}
+                            onFailure={this.responseErrorGoogle}
+                            cookiePolicy={'single_host_origin'}
+                            className="googleBtn"
+                            theme="dark"
+                        />
+                        </div>
+                        <div className="col-10 offset-2 facebookLogin">
+                        <FacebookLogin
+                        appId="271933347267191"
+                        autoLoad={false}
+                        fields="name,email,picture"
+                        callback={this.responseFacebook} 
+                        className="facebookBtn"
+                        icon="element"
+                        />
+                        </div>
+                        </div>
                     </div>
                 </div>
             </Fragment>

@@ -9,6 +9,8 @@ function routes(userSchema)
 
     UserRouter.post("/register", controller.register);
     UserRouter.post("/login", controller.login);
+    UserRouter.post("/user/googlelogin", controller.googleLogin);
+    UserRouter.post("/user/facebooklogin", controller.facebooklogin);
     UserRouter.get("/user",auth ,controller.authUser)
     return UserRouter;
 }

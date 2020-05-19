@@ -7,6 +7,7 @@ This Repo Related to Simple GuestBook Project Where You Can Share Messages with 
   - Reactjs
   - JWT (Json Web Token)
   - RESTful Api's
+  - Social Media Apis (Facebook, Google,..)
   
 # Installation
 After download or clone the repo, you need to follow this steps to have the development environment running :
@@ -33,6 +34,7 @@ After download or clone the repo, you need to follow this steps to have the deve
   - Secure My Front-end Application With RouteGuard
   - Authorization For User to ( Delete/Update ) his Messages Only
   - Register / Login Validation
+  - Login Within Social Media Apis & JWT
   
 # Project Pictures
 ![](client/public/MessageHomePage.png)

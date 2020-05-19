@@ -57,3 +57,13 @@ h1{
 span{
   width: 100% !important;
 }
+.socialContainer{
+  margin-top: -15px;
+}
+.metro{
+  width: 100% !important;
+  height: 48px !important;
+  text-align: center !important;
+  justify-content: center !important;
+  padding: 0% !important;
+}

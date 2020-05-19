@@ -93,7 +93,7 @@ class Login extends React.Component {
                                 </div>
                             </div>
                         </form>
-                        <div className="row">
+                        <div className="row socialContainer">
                         <div className="col-10 offset-2">
                         <GoogleLogin
                             clientId="457064280855-fon6ji3u3aqgi3kpjp03e4lhtfgtshmj.apps.googleusercontent.com"

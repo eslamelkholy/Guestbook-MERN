@@ -40,7 +40,7 @@ After download or clone the repo, you need to follow this steps to have the deve
 ![](client/public/MessageHomePage.png)
 ![](client/public/MessagePage.png)
 ![](client/public/RegisterPage.png)
-![](client/public/LoginPage.png)
+![](client/public/LoginPage2.png)
 
 
 
